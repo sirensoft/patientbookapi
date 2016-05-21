@@ -14,8 +14,7 @@
     </head>
     <body>
         <h1>patient/index</h1>
-        <p>
-            
+        <p>            
             เลขบัตรประชาชน : <?=$cid?>
         </p>
     </body>
