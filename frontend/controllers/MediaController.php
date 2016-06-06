@@ -40,10 +40,7 @@ class MediaController extends \yii\web\Controller {
 
     public function actionPush($msg = null) {
         $tokens = ['ezEt6MNeOoc:APA91bGPTt9hZQlVPr6OsR6BYKNjiSrOg376whVQ0KsDxbUKvdumIZ8o8QhYNbh4mvPWSe86u9QoIaiG3cjfTuua-8tsI9qgyRnJFfpz0w_nkoZ92wM1TGWS1K5R5MIz1ewR4192qxAZ', 'e_6hCIkfcqA:APA91bEZdYI1SpRdnnyXqiaYR6ur9P6UErZxFwBRaB1BnrKQbbnXhdqztT2JYAcFZ9YSq7MbNDs5b9TQQZIUcooOCN0-UVK6hdjz8kEjIukqhQA3jVm9HrcQuXJHI_zN7a1DBkXYIP4T'];
-
-        $message = "ทาอาหารให้ตรงเวลา";
-
-
+       
         $push_status = $this->send_notification($tokens, $msg);
         return $push_status;
     }
