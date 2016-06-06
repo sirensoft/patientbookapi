@@ -18,9 +18,13 @@ class PatientController extends \yii\web\Controller {
     
     public function actionJson(){
         $this->jsonHead();
-        $arr = ['name'=>'tehnn','lname'=>'jad','age'=>'1111'];        
-        return json_encode($arr);
+        $arr = ['name'=>'อุเทน','lname'=>'jad','age'=>'1111'];        
+        return ($arr);
         
+    }
+    
+    public function actionYoutube(){
+        return $this->render('youtube');
     }
 
 }
