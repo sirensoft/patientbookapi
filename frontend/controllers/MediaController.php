@@ -6,14 +6,18 @@ class MediaController extends \yii\web\Controller {
 
     protected function send_notification($tokens, $message) {
         $url = 'https://fcm.googleapis.com/fcm/send';
-        $fields = array(
+        $fields = [
             'registration_ids' => $tokens,
-            //'data' => $message,
-            'notification'=>[
-                'body'=>$message,
-                'title'=>'หมอแจ้งเตือน'
+            'priority' => 'normal',
+            'notification' => [
+                'body' => $message,
+                'title' => 'หมอแจ้งเตือน'
+            ],
+            'data' => [
+                'Nick' => "Mario",
+                'Room' => "PortugalVSDenmark"
             ]
-        );
+        ];
         $headers = array(
             'Authorization:key = AIzaSyD11ZHNAELUU_oemy5qYcbzWHQQO9kMphY',
             'Content-Type: application/json'
@@ -34,18 +38,18 @@ class MediaController extends \yii\web\Controller {
         return $result;
     }
 
-    public function actionPush($msg=null){
-        $tokens = ['ezEt6MNeOoc:APA91bGPTt9hZQlVPr6OsR6BYKNjiSrOg376whVQ0KsDxbUKvdumIZ8o8QhYNbh4mvPWSe86u9QoIaiG3cjfTuua-8tsI9qgyRnJFfpz0w_nkoZ92wM1TGWS1K5R5MIz1ewR4192qxAZ','e_6hCIkfcqA:APA91bEZdYI1SpRdnnyXqiaYR6ur9P6UErZxFwBRaB1BnrKQbbnXhdqztT2JYAcFZ9YSq7MbNDs5b9TQQZIUcooOCN0-UVK6hdjz8kEjIukqhQA3jVm9HrcQuXJHI_zN7a1DBkXYIP4T'];
-        
+    public function actionPush($msg = null) {
+        $tokens = ['ezEt6MNeOoc:APA91bGPTt9hZQlVPr6OsR6BYKNjiSrOg376whVQ0KsDxbUKvdumIZ8o8QhYNbh4mvPWSe86u9QoIaiG3cjfTuua-8tsI9qgyRnJFfpz0w_nkoZ92wM1TGWS1K5R5MIz1ewR4192qxAZ', 'e_6hCIkfcqA:APA91bEZdYI1SpRdnnyXqiaYR6ur9P6UErZxFwBRaB1BnrKQbbnXhdqztT2JYAcFZ9YSq7MbNDs5b9TQQZIUcooOCN0-UVK6hdjz8kEjIukqhQA3jVm9HrcQuXJHI_zN7a1DBkXYIP4T'];
+
         $message = "ทาอาหารให้ตรงเวลา";
-        
-        
-	$push_status = $this->send_notification($tokens, $msg);
-	return $push_status;        
+
+
+        $push_status = $this->send_notification($tokens, $msg);
+        return $push_status;
     }
+
     public function actionIndex() {
         return $this->render('index');
     }
-    
 
 }
