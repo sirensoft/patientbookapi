@@ -37,8 +37,8 @@ class MediaController extends \yii\web\Controller {
                 'title' => 'หมอแจ้งเตือน'
             ],
             'data' => [
-                'Nick' => "Mario",
-                'Room' => "PortugalVSDenmark"
+                'id' => "UTEHN",
+                'desc' => "OK"
             ]
         ];
         $headers = array(
