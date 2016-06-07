@@ -3,11 +3,34 @@
 namespace frontend\controllers;
 
 class MediaController extends \yii\web\Controller {
+    
+    public $enableCsrfValidation = false;
+
+    protected function call($store_name, $arg = NULL) {
+        $sql = "";
+        if ($arg != NULL) {
+            $sql = "call " . $store_name . "(" . $arg . ");";
+        } else {
+            $sql = "call " . $store_name . "();";
+        }
+        return $this->query_all($sql);
+    }
+
+    protected function exec_sql($sql) {
+        $affect_row = \Yii::$app->db->createCommand($sql)->execute();
+        return $affect_row;
+    }
+
+    protected function query_all($sql) {
+        $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
+        return $rawData;
+    }
 
     protected function send_notification($tokens, $message) {
         $url = 'https://fcm.googleapis.com/fcm/send';
         $fields = [
-            'registration_ids' => $tokens,
+            //'registration_ids' => $tokens,
+            'to' => $tokens,
             'priority' => 'normal',
             'notification' => [
                 'body' => $message,
@@ -38,11 +61,19 @@ class MediaController extends \yii\web\Controller {
         return $result;
     }
 
-    public function actionPush($msg = null) {
-        $tokens = ['ezEt6MNeOoc:APA91bGPTt9hZQlVPr6OsR6BYKNjiSrOg376whVQ0KsDxbUKvdumIZ8o8QhYNbh4mvPWSe86u9QoIaiG3cjfTuua-8tsI9qgyRnJFfpz0w_nkoZ92wM1TGWS1K5R5MIz1ewR4192qxAZ', 'e_6hCIkfcqA:APA91bEZdYI1SpRdnnyXqiaYR6ur9P6UErZxFwBRaB1BnrKQbbnXhdqztT2JYAcFZ9YSq7MbNDs5b9TQQZIUcooOCN0-UVK6hdjz8kEjIukqhQA3jVm9HrcQuXJHI_zN7a1DBkXYIP4T'];
-       
-        $push_status = $this->send_notification($tokens, $msg);
+    public function actionPush() {
+        //$tokens = $token;
+        $token = \Yii::$app->request->post('token');
+        $msg = \Yii::$app->request->post('msg');
+        $push_status = $this->send_notification($token, $msg);
         return $push_status;
+    }
+    
+    public function actionUpdateToken($cid=null,$token=null){
+        
+        $sql = " UPDATE patient t SET t.token = '$token' WHERE t.cid = '$cid' ";
+        $this->exec_sql($sql);
+                
     }
 
     public function actionIndex() {

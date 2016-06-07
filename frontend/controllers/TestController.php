@@ -9,7 +9,9 @@ class TestController extends \yii\web\Controller
         return $this->render('index');
     }
     
-    public function actionAdd($m){
+    public function actionAdd($m=null){
+        //$m = \Yii::$app->request->post('m');
+        
         $sql = " INSERT INTO `test` (`message`) VALUES ('$m') ";
         return \yii::$app->db->createCommand($sql)->execute();
         
