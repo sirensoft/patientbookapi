@@ -3,7 +3,7 @@
 namespace frontend\controllers;
 
 class MediaController extends \yii\web\Controller {
-    
+
     public $enableCsrfValidation = false;
 
     protected function call($store_name, $arg = NULL) {
@@ -35,7 +35,7 @@ class MediaController extends \yii\web\Controller {
             'notification' => [
                 'body' => $message,
                 'title' => 'หมอแจ้งเตือน',
-               // 'click_action'=>'plkhealth.it.app.patientbook.WebviewActivity'
+            // 'click_action'=>'plkhealth.it.app.patientbook.WebviewActivity'
             ],
             'data' => [
                 'id' => "UTEHN",
@@ -69,16 +69,24 @@ class MediaController extends \yii\web\Controller {
         $push_status = $this->send_notification($token, $msg);
         return $push_status;
     }
-    
-    public function actionUpdateToken($cid=null,$token=null){
-        
-        $sql = " UPDATE patient t SET t.token = '$token' WHERE t.cid = '$cid' ";
+
+    public function actionUpdateToken() {
+        $token = \Yii::$app->request->post('token');
+        $cid = \Yii::$app->request->post('cid');
+        $key_id = \Yii::$app->request->post('key_id');
+        $sql = " UPDATE patient t SET t.token = '$token' WHERE t.cid = '$cid' and t.key_id='$key_id' and t.active='1' ";
         $this->exec_sql($sql);
-                
     }
 
     public function actionIndex() {
         return $this->render('index');
+    }
+
+    public function actionCheckMedia($cid = "") {
+        
+        
+        $sql = " SELECT count(t.cid) FROM patient_media t WHERE t.cid ='$cid' AND t.media_read = 0 ";
+        return \Yii::$app->db->createCommand($sql)->queryScalar();
     }
 
 }

@@ -26,5 +26,8 @@ class TestController extends \yii\web\Controller
             'dataProvider'=>$dataProvider
         ]);
     }
+    public function actionTestConn(){
+        return \Yii::$app->db->open();
+    }
 
 }
