@@ -34,7 +34,8 @@ class MediaController extends \yii\web\Controller {
             'priority' => 'normal',
             'notification' => [
                 'body' => $message,
-                'title' => 'หมอแจ้งเตือน'
+                'title' => 'หมอแจ้งเตือน',
+               // 'click_action'=>'plkhealth.it.app.patientbook.WebviewActivity'
             ],
             'data' => [
                 'id' => "UTEHN",
