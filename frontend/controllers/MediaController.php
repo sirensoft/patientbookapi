@@ -1,10 +1,14 @@
 <?php
 
 namespace frontend\controllers;
+use yii\web\Response;
 
 class MediaController extends \yii\web\Controller {
 
     public $enableCsrfValidation = false;
+      protected function jsonHead(){
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+    }
 
     protected function call($store_name, $arg = NULL) {
         $sql = "";
@@ -87,6 +91,19 @@ class MediaController extends \yii\web\Controller {
         
         $sql = " SELECT count(t.cid) FROM patient_media t WHERE t.cid ='$cid' AND t.media_read = 0 ";
         return \Yii::$app->db->createCommand($sql)->queryScalar();
+    }
+    
+    public function actionListMedia($cid=""){
+        //$cid = \Yii::$app->request->post('cid');
+        $sql = " SELECT p.*,m.media_name,m.media_type,m.media_url FROM patient_media p
+LEFT JOIN media m on m.media_id = p.media_id
+WHERE p.cid = '$cid'
+ORDER BY p.media_read asc,p.datetime_send DESC "   ;    
+        
+        $array = $this->query_all($sql);
+        $this->jsonHead();
+        return $array;
+        
     }
 
 }
