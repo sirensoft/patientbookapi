@@ -105,5 +105,15 @@ ORDER BY p.media_read asc,p.datetime_send DESC "   ;
         return $array;
         
     }
+    
+    public function actionRead(){
+        $cid = \Yii::$app->request->post('cid');
+        $mdate = \Yii::$app->request->post('mdate');
+        $mid = \Yii::$app->request->post('mid');
+        $sql = "UPDATE patient_media t SET t.media_read = 1 
+WHERE t.cid = '$cid' and t.datetime_send = '$mdate' and t.media_id = '$mid'";
+        return $this->exec_sql($sql);
+        
+    }
 
 }
