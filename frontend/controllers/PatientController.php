@@ -58,7 +58,7 @@ class PatientController extends \yii\web\Controller {
         $raw = \Yii::$app->db->createCommand($sql)->queryScalar();
         //$img_code = base64_encode($raw );
         //return  "<img src= \"data:image/jpeg;base64,$img_code\" />";
-        header('Content-Type: image/jpeg');
+        header('Content-Type: image/png');
          //\Yii::$app->response->format = Response::FORMAT_RAW;
         echo $raw ;
         
