@@ -63,5 +63,16 @@ class PatientController extends \yii\web\Controller {
         echo $raw ;
         
     }
+    public function actionAppoint(){
+        $this->jsonHead();
+        $sql = " SELECT min(t.next_date) as mdate,t.next_time as mtime,t.cid
+,t.app_note mnote,t.hospcode,t.app_clinic mclinic,t.app_doctor mdoctor FROM appointment t
+WHERE t.next_date >= CURDATE() AND t.cid = '3650200185208' ";
+        $raw_array = $this->query_all($sql);        
+        $data=[
+            'data'=>$raw_array
+        ];
+        return $data;
+    }
 
 }
