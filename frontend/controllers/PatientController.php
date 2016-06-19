@@ -52,11 +52,14 @@ class PatientController extends \yii\web\Controller {
     
     public function actionRisk($cid=""){
         $sql = " SELECT 
+
 t.person_disease
 ,t.waist,t.weight,t.height,t.bmi,t.bmi_color,t.bmi_text
 ,t.dm_color,t.dm_text,t.ht_color,t.ht_text
+,t.bps,t.bpd ,t.pulse
 ,t.ckd_color,t.ckd_text,t.cvd_color,t.cvd_text,t.cvd_risk
 ,t.last_update
+
 FROM patient t WHERE t.cid = '$cid' ";
         
         $raw = $this->query_all($sql);
