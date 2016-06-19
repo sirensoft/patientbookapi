@@ -103,5 +103,28 @@ WHERE t.next_date >= CURDATE() AND t.cid = '$cid' ";
 
         return $raw_array;
     }
+    
+    
+    public function actionInput(){
+        
+        $cid=\Yii::$app->request->post('cid');
+        $date_input = \Yii::$app->request->post('date_input');
+        $time_input = \Yii::$app->request->post('time_input');
+        $weight=\Yii::$app->request->post('weight');
+        $height=\Yii::$app->request->post('height');
+        $waist=\Yii::$app->request->post('waist');
+        $bps=\Yii::$app->request->post('bps');
+        $bpd=\Yii::$app->request->post('bpd');
+        $pulse=\Yii::$app->request->post('pulse');
+        $sugar=\Yii::$app->request->post('sugar');
+        $note1=\Yii::$app->request->post('note1');
+        $note2=\Yii::$app->request->post('note2');
+        
+        $sql =" INSERT INTO `patient_input` (`cid`, `date_input`, `time_input`, `weight`, `height`, `waist`, `bps`, `bpd`, `pulse`, `sugar`, `note1`, `note2`) "
+                . "VALUES ('$cid', '$date_input', '$time_input', '$weight', '$height', '$waist', '$bps', '$bpd', '$pulse', '$sugar', '$note1', '$note2') ";
+    
+        return $this->exec_sql($sql);
+        
+    }
 
 }
