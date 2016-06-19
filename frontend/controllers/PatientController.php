@@ -38,7 +38,21 @@ class PatientController extends \yii\web\Controller {
         ]);
     }
     
-    public function actionJson(){
+    public function actionInfo($cid=""){
+        $sql = "SELECT * FROM patient t WHERE t.cid = '$cid' ";
+        $raw = $this->query_all($sql);
+        $dataProvider = new yii\data\ArrayDataProvider([
+            'allModels'=>$raw
+                
+        ]);
+        return $this->render('info',[
+            'dataProvider'=>$dataProvider,
+            'raw'=>$raw
+        ]);
+        
+    }
+
+        public function actionJson(){
         $this->jsonHead();
         $arr = ['name'=>'อุเทน','lname'=>'jad','age'=>'1111'];        
         return ($arr);
