@@ -27,25 +27,38 @@
         
     </tr>
     
-    <tr><td colspan="3"><strong>ความเสี่ยง</strong></td></tr>
+    <tr><td colspan="3"><strong><u>ความเสี่ยง</u></strong></td></tr>
     
     <tr>
-        <td>คุมเบาหวาน</td>
-        <td colspan="2" bgcolor="#<?=$data['dm_color']?>" style="color: white"><b><?=$data['dm_text']?></b> </td>
+        <td colspan="3">คุมเบาหวาน</td>
+        
     </tr>
-     <tr>
-        <td>คุมความดัน</td>
-        <td colspan="2" bgcolor="#<?=$data['ht_color']?>" style="color: white"><b><?=$data['ht_text']?></b></td>
-    </tr>
-    
-     <tr>
-        <td>โรคไต</td>
-        <td colspan="2" bgcolor="#<?=$data['ckd_color']?>" ><b><?=$data['ckd_text']?></b></td>
+    <tr>
+        <td colspan="3" bgcolor="#<?=$data['dm_color']?>" style="color: white"><h4><?=$data['dm_text']?></h4> </td>
     </tr>
     
      <tr>
-        <td>โรคหลอดเลือดสมอง</td>
-        <td colspan="2" bgcolor="#<?=$data['cvd_color']?>" style="color: white"><b><?=$data['cvd_text']?></b></td>
+         <td colspan="3">คุมความดัน</td>
+        
+    </tr>
+    <tr>
+        <td colspan="3" bgcolor="#<?=$data['ht_color']?>" style="color: white"><h4><?=$data['ht_text']?></h4></td>
+    </tr>
+    
+    
+     <tr>
+         <td colspan="3">โรคไต</td>        
+    </tr>
+    <tr>
+        <td colspan="3" bgcolor="#<?=$data['ckd_color']?>" ><h4><?=$data['ckd_text']?></h4></td>
+    </tr>
+    
+     <tr>
+         <td colspan="3">โรคหลอดเลือดหัวใจ</td>
+        
+    </tr>
+    <tr>
+        <td colspan="3" bgcolor="#<?=$data['cvd_color']?>" style="color: white"><h4><?=$data['cvd_text']?></h4></td>
     </tr>
     
     
