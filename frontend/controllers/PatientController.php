@@ -106,7 +106,9 @@ WHERE t.next_date >= CURDATE() AND t.cid = '$cid' ";
     
     
     public function actionInput(){
-        
+        if(!\Yii::$app->request->isPost){
+            return 0;
+        }
         $cid=\Yii::$app->request->post('cid');
         $date_input = \Yii::$app->request->post('date_input');
         $time_input = \Yii::$app->request->post('time_input');
