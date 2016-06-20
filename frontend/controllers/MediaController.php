@@ -35,7 +35,7 @@ class MediaController extends \yii\web\Controller {
         $fields = [
             //'registration_ids' => $tokens,
             'to' => $tokens,
-            'priority' => 'normal',
+            'priority' => 'high',
             'notification' => [
                 'body' => $message,
                 'title' => 'หมอแจ้งเตือน',
@@ -77,9 +77,9 @@ class MediaController extends \yii\web\Controller {
     public function actionUpdateToken() {
         $token = \Yii::$app->request->post('token');
         $cid = \Yii::$app->request->post('cid');
-        $key_id = \Yii::$app->request->post('key_id');
-        $sql = " UPDATE patient t SET t.token = '$token' WHERE t.cid = '$cid' and t.key_id='$key_id' and t.active='1' ";
-        $this->exec_sql($sql);
+        //$key_id = \Yii::$app->request->post('key_id');
+        $sql = " UPDATE patient t SET t.token = '$token' WHERE t.cid = '$cid'  and t.active='1' ";
+        return $this->exec_sql($sql);
     }
 
     public function actionIndex() {
