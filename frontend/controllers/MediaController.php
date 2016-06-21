@@ -33,12 +33,14 @@ class MediaController extends \yii\web\Controller {
     protected function send_notification($tokens, $message) {
         $url = 'https://fcm.googleapis.com/fcm/send';
         $fields = [
-            //'registration_ids' => $tokens,
+            //'registration_ids' => $tokens_array,
+             
             'to' => $tokens,
             'priority' => 'high',
             'notification' => [
                 'body' => $message,
                 'title' => 'หมอแจ้งเตือน',
+                
             // 'click_action'=>'plkhealth.it.app.patientbook.WebviewActivity'
             ],
             'data' => [
