@@ -110,8 +110,8 @@ WHERE t.next_date >= CURDATE() AND t.cid = '$cid' ";
             return 0;
         }
         $cid=\Yii::$app->request->post('cid');
-        $date_input = \Yii::$app->request->post('date_input');
-        $time_input = \Yii::$app->request->post('time_input');
+        $date_input = date('Y-m-d');
+        $time_input = date('H:i:s');
         $weight=\Yii::$app->request->post('weight');
         $height=\Yii::$app->request->post('height');
         $waist=\Yii::$app->request->post('waist');
