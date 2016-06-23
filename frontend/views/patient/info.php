@@ -22,6 +22,7 @@ echo DetailView::widget([
          ['attribute'=>'occupation','label'=>'อาชีพ'],         
         ['attribute'=>'weight','label'=>'หนัก(กก)'],
         ['attribute'=>'height','label'=>'สูง(ซม)'],
+        
         ['attribute'=>'private_doctor_name','label'=>'หมอประจำ'],
         ['attribute'=>'volunteer','label'=>'อสม.ดูแล'],
        

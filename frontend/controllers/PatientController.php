@@ -6,11 +6,12 @@ use yii;
 use yii\web\Response;
 use dosamigos\arrayquery\ArrayQuery;
 use frontend\models\Patient;
+use common\components\AppController;
 
-class PatientController extends \yii\web\Controller {
+class PatientController extends AppController {
 
     public $enableCsrfValidation = false;
-
+    
     protected function call($store_name, $arg = NULL) {
         $sql = "";
         if ($arg != NULL) {
@@ -57,6 +58,9 @@ t.person_disease
 ,t.waist,t.weight,t.height,t.bmi,t.bmi_color,t.bmi_text
 ,t.dm_color,t.dm_text,t.ht_color,t.ht_text
 ,t.bps,t.bpd ,t.pulse
+,CONCAT(t.eye_date,' (',t.eye_result,')') eye
+,CONCAT(t.kidney_date,' (',t.kidney_result,')') kidney
+,CONCAT(t.foot_date,' (',t.foot_result,')') foot
 ,t.ckd_color,t.ckd_text,t.cvd_color,t.cvd_text,t.cvd_risk
 ,t.last_update
 
@@ -74,9 +78,7 @@ FROM patient t WHERE t.cid = '$cid' ";
         return ($arr);
     }
 
-    public function actionYoutube() {
-        return $this->render('youtube');
-    }
+   
 
     public function actionCheckActive($cid = "") {
         $sql = "select active from patient where cid='$cid'";
