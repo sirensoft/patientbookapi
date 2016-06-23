@@ -18,7 +18,11 @@ class ChatController extends \yii\web\Controller {
         $rawData = \Yii::$app->db->createCommand($sql)->queryAll();
         return $rawData;
     }
-
+     protected function exec_sql($sql) {
+        $affect_row = \Yii::$app->db->createCommand($sql)->execute();
+        return $affect_row;
+    }
+    
     public function actionIndex() {
         return $this->render('index');
     }
@@ -36,6 +40,14 @@ class ChatController extends \yii\web\Controller {
     }
 
     public function actionGet($cid = NULL) {
+        
+        $sql = " UPDATE chat  t  SET t.`read` = 'yes'
+WHERE (t.`read` IS NULL OR t.`read` = '')
+AND t.doctor_or_patient = 'doctor'
+AND t.patient_cid = '$cid'  ";
+        $this->exec_sql($sql);
+        
+        
         $sql = " SELECT * FROM chat t
 WHERE t.patient_cid = '$cid'
 ORDER BY id ASC ";
@@ -43,5 +55,15 @@ ORDER BY id ASC ";
         $this->jsonHead();
         return $array;
     }
+    
+    public function actionNoRead($cid = NULL){
+        $sql = " SELECT COUNT(t.id) FROM chat t 
+WHERE (t.`read` IS NULL OR t.`read` = '')
+AND t.doctor_or_patient = 'doctor' AND t.patient_cid = '$cid' ";
+        return \Yii::$app->db->createCommand($sql)->queryScalar();
+    }
+    
+    
+    
 
 }
