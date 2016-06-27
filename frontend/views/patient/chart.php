@@ -38,9 +38,6 @@ use miloschuman\highcharts\Highcharts;
 
         </div>
 
-
-
-
         <?php
         $data = [];
         $data[] = [
@@ -57,7 +54,7 @@ use miloschuman\highcharts\Highcharts;
         
    $(function () {
     $('#container').highcharts({
-        chart:{  type:'column'},
+        chart:{  type:'column', animation: false},
         credits: {   enabled: false },
         title: {
             text: 'ภาษาไทย',
