@@ -131,7 +131,13 @@ WHERE t.next_date >= CURDATE() AND t.cid = '$cid' ";
         
     }
     public function actionInputList($cid=NULL){
-        return $this->render('input-list');               
+        
+        $sql = "select * from patient_input where cid= '$cid'";
+        $raw = $this->query_all($sql);
+        
+        return $this->render('input-list',[
+            'raw'=>$raw
+        ]);               
     }
 
 }
