@@ -34,54 +34,132 @@ use miloschuman\highcharts\Highcharts;
 
         </div>
 
-        <div id="container">
+        <div id="container1" style="background-color: orange">
+
+        </div>
+        <hr>
+        <div id="container2" style="background-color: peru">
+
+        </div>
+        <hr>
+        <div id="container3" style="background-color: khaki">
 
         </div>
 
         <?php
-        $data = [];
-        $data[] = [
-            'name' => 'A',
-            'data' => [10]
-        ];
-        $data[] = [
-            'name' => 'B',
-            'data' => [20]
-        ];
-        $data = json_encode($data);
+       
 
-        $js = <<<JS
-        
-   $(function () {
-    $('#container').highcharts({
-        chart:{  type:'column', animation: false},
-        credits: {   enabled: false },
+$js = <<<JS
+                  
+    $('#container1').highcharts({
         title: {
-            text: 'ภาษาไทย',
+            text: 'ความดัน',
             x: -20 //center
         },
-        plotOptions: {
+         plotOptions: {
             series: {
                 animation: false
             }
-        },        
+        },
+        credits: {   enabled: false },
+        
+        xAxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        },
         yAxis: {
             title: {
-                text: 'Temperature (°C)'
+                text: 'มม.ปรอท'
             },
             plotLines: [{
-                value: 0,
-                width: 1,
-                color: '#808080'
+                value:140,
+                color: '#ff0000',
+                width:2,
+                zIndex:4,
+                label:{text:'ไม่เกิน 140'}
             }]
         },
-        tooltip: {
-            valueSuffix: '°C'
+        
+        series: [{
+            showInLegend: false,
+            name: 'ความดัน',
+            data: [120, 69, 95, 145, 182, 120, 122, 105, 233, 183, 139, 96]
+        }]
+    });
+        
+     $('#container2').highcharts({
+        title: {
+            text: 'น้ำตาล',
+            x: -20 //center
+        },
+       
+         plotOptions: {
+            series: {
+                animation: false
+            }
+        },
+        credits: {   enabled: false },
+        
+        xAxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        },
+        yAxis: {
+            title: {
+                text: 'มล'
+            },
+            plotLines: [{
+                value:140,
+                color: '#ff0000',
+                width:2,
+                zIndex:4,
+                label:{text:'ไม่เกิน 140'}
+            }]
         },
         
-        series: $data
+        series: [{
+            showInLegend: false,
+            name: 'น้ำตาล',
+            data: [120, 69, 95, 145, 182, 120, 122, 105, 233, 183, 139, 96]
+        }]
     });
-});
+        
+     $('#container3').highcharts({
+        title: {
+            text: 'น้ำหนัก',
+            x: -20 //center
+        },
+         plotOptions: {
+            series: {
+                animation: false
+            }
+        },
+        credits: {   enabled: false },
+        
+        xAxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        },
+        yAxis: {
+            title: {
+                text: 'กก'
+            },
+            plotLines: [{
+                value:140,
+                color: '#ff0000',
+                width:2,
+                zIndex:4,
+                label:{text:'ไม่เกิน 140'}
+            }]
+        },
+        
+        series: [{
+            showInLegend: false,
+            name: 'น้ำหนักตัว',
+            data: [120, 69, 95, 145, 182, 120, 122, 105, 233, 183, 139, 96]
+        }]
+    });
+
         
 JS;
         $this->registerJs($js);
