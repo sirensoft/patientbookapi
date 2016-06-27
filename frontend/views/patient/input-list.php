@@ -6,13 +6,15 @@ $i=0;
 
 ?>
 <?php foreach ($raw as $value): ?>
+<?php $i=$i+1; ?>
 <?php
 
 if($i%2==0){
-    $color = 'orange';
+    $color = 'pink';
 }  else {
    $color='lime';  
 }
+
 ?>
 <div style="background-color: <?=$color?>;padding-top:5px;padding-bottom: 5px;padding-left: 5px;margin-top: 5px">
     <b>วันที่:<?=  $value['date_input']?>  <?=$value['time_input']?></b>
@@ -21,7 +23,7 @@ if($i%2==0){
     <br>ชีพจร:<?=$value['pulse']?> น้ำตาล:<?=$value['sugar']?>
     <br>-<?=$value['note1']?>
 </div>
-<?php $i=$i+1; ?>
+
 
 <?php endforeach; ?>
 
