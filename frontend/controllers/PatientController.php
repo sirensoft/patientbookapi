@@ -130,5 +130,8 @@ WHERE t.next_date >= CURDATE() AND t.cid = '$cid' ";
         return $this->exec_sql($sql);
         
     }
+    public function actionInputList($cid=NULL){
+        return $this->render('input-list');               
+    }
 
 }
