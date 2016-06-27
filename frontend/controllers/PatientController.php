@@ -141,9 +141,7 @@ WHERE t.next_date >= CURDATE() AND t.cid = '$cid' ";
     }
     public function actionChart(){
         return $this->render('chart',[
-            'weight'=>$weight,
-            'bp'=>$bp,
-            'sugar'=>$sugar
+           
         ]);
     }
 
