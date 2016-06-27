@@ -23,11 +23,11 @@ use miloschuman\highcharts\Highcharts;
             <?php
             echo Highcharts::widget([
                 'scripts' => [
-                    'highcharts-more',
+                    //'highcharts-more',
                     //'modules/exporting', 
                     //'themes/grid',       
                     //'highcharts-3d',
-                    'modules/drilldown'
+                    //'modules/drilldown'
                 ]
             ]);
             ?>
@@ -64,8 +64,7 @@ $js = <<<JS
         credits: {   enabled: false },
         
         xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            categories: ['มค', 'กพ', 'มีค', 'เมย', 'พค', 'มิย','กค', 'สค', 'กย', 'ตค', 'พย', 'ธค']
         },
         yAxis: {
             title: {
@@ -101,8 +100,7 @@ $js = <<<JS
         credits: {   enabled: false },
         
         xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            categories: ['มค', 'กพ', 'มีค', 'เมย', 'พค', 'มิย','กค', 'สค', 'กย', 'ตค', 'พย', 'ธค']
         },
         yAxis: {
             title: {
@@ -137,8 +135,7 @@ $js = <<<JS
         credits: {   enabled: false },
         
         xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            categories: ['มค', 'กพ', 'มีค', 'เมย', 'พค', 'มิย','กค', 'สค', 'กย', 'ตค', 'พย', 'ธค']
         },
         yAxis: {
             title: {
