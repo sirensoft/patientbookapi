@@ -40,7 +40,7 @@
     <tr><td colspan="3"><strong><u>ความเสี่ยง</u></strong></td></tr>
 
     <tr>
-        <td colspan="3">คุมเบาหวาน</td>
+        <td colspan="3">เบาหวาน</td>
 
     </tr>
     <tr>
@@ -48,7 +48,7 @@
     </tr>
 
     <tr>
-        <td colspan="3">คุมความดัน</td>
+        <td colspan="3">ความดัน</td>
 
     </tr>
     <tr>
