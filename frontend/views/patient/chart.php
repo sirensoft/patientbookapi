@@ -47,8 +47,67 @@ use miloschuman\highcharts\Highcharts;
         </div>
 
         <?php
-       
+ //ความดัน
+ $sql = " SELECT * FROM (
+	SELECT t.date_input,t.time_input,t.bps,t.bpd FROM patient_input t
+	WHERE (t.date_input IS NOT NULL  or trim(t.date_input) <>'')
+	AND (t.bps IS NOT NULL AND trim(t.bps) <> '')
+	and t.cid = '$cid'
+	GROUP BY t.date_input,t.time_input
+	ORDER BY  t.date_input DESC,t.time_input DESC LIMIT 12
+) t  GROUP BY t.date_input ";
+ 
+  $raw = \Yii::$app->db->createCommand($sql)->queryAll();
+ $bp = [];
+ $cat_bp=[];
+ foreach ($raw as $value) {
+    $bp[]= $value['bps']*1; 
+    $cat_bp[]=$value['date_input'];
+ }
+ $bp = json_encode($bp);
+ $cat_bp=  json_encode($cat_bp);
+ 
+ //น้ำตาล 
+ $sql = " SELECT * FROM (
+	SELECT t.date_input,t.time_input,t.sugar FROM patient_input t
+	WHERE (t.date_input IS NOT NULL  or trim(t.date_input) <>'')
+	AND (t.sugar IS NOT NULL AND trim(t.sugar) <> '')
+	and t.cid = '$cid'
+	GROUP BY t.date_input,t.time_input
+	ORDER BY  t.date_input DESC,t.time_input DESC LIMIT 12
+) t  GROUP BY t.date_input ";
+ 
+ $raw = \Yii::$app->db->createCommand($sql)->queryAll();
+ $sugar = [];
+ $cat_sugar=[];
+ foreach ($raw as $value) {
+    $sugar[]= $value['sugar']*1; 
+    $cat_sugar[]=$value['date_input'];
+ }
+ $sugar = json_encode($sugar);
+ $cat_sugar=  json_encode($cat_sugar);
+ 
+ //นำหนัก 
+ $sql = " SELECT * FROM (
+	SELECT t.date_input,t.time_input,t.weight FROM patient_input t
+	WHERE (t.date_input IS NOT NULL  or trim(t.date_input) <>'')
+	AND (t.weight IS NOT NULL AND trim(t.weight) <> '')
+	and t.cid = '$cid'
+	GROUP BY t.date_input,t.time_input
+	ORDER BY  t.date_input DESC,t.time_input DESC LIMIT 10
+) t  GROUP BY t.date_input ";
+ 
+  $raw = \Yii::$app->db->createCommand($sql)->queryAll();
+ $w = [];
+ $cat_w=[];
+ foreach ($raw as $value) {
+    $w[]= $value['weight']*1; 
+    $cat_w[]=$value['date_input'];
+ }
+ $w = json_encode($w);
+ $cat_w=  json_encode($cat_w);
 
+        
 $js = <<<JS
                   
     $('#container1').highcharts({
@@ -56,6 +115,7 @@ $js = <<<JS
             text: 'ความดัน',
             x: -20 //center
         },
+        colors:['#0000ff'],
          plotOptions: {
             series: {
                 animation: false
@@ -64,7 +124,7 @@ $js = <<<JS
         credits: {   enabled: false },
         
         xAxis: {
-            categories: ['มค', 'กพ', 'มีค', 'เมย', 'พค', 'มิย','กค', 'สค', 'กย', 'ตค', 'พย', 'ธค']
+            categories: $cat_bp
         },
         yAxis: {
             title: {
@@ -82,7 +142,7 @@ $js = <<<JS
         series: [{
             showInLegend: false,
             name: 'ความดัน',
-            data: [120, 69, 95, 145, 182, 120, 122, 105, 233, 183, 139, 96]
+            data: $bp
         }]
     });
         
@@ -91,6 +151,7 @@ $js = <<<JS
             text: 'น้ำตาล',
             x: -20 //center
         },
+         colors:['#ff0000'],
        
          plotOptions: {
             series: {
@@ -100,7 +161,7 @@ $js = <<<JS
         credits: {   enabled: false },
         
         xAxis: {
-            categories: ['มค', 'กพ', 'มีค', 'เมย', 'พค', 'มิย','กค', 'สค', 'กย', 'ตค', 'พย', 'ธค']
+            categories: $cat_sugar
         },
         yAxis: {
             title: {
@@ -118,7 +179,7 @@ $js = <<<JS
         series: [{
             showInLegend: false,
             name: 'น้ำตาล',
-            data: [120, 69, 95, 145, 182, 120, 122, 105, 233, 183, 139, 96]
+            data: $sugar
         }]
     });
         
@@ -127,6 +188,7 @@ $js = <<<JS
             text: 'น้ำหนัก',
             x: -20 //center
         },
+         colors:['#6dc066'],
          plotOptions: {
             series: {
                 animation: false
@@ -135,25 +197,25 @@ $js = <<<JS
         credits: {   enabled: false },
         
         xAxis: {
-            categories: ['มค', 'กพ', 'มีค', 'เมย', 'พค', 'มิย','กค', 'สค', 'กย', 'ตค', 'พย', 'ธค']
+            categories: $cat_w
         },
         yAxis: {
             title: {
-                text: 'กก'
+                text: 'กิโลกรัม'
             },
             plotLines: [{
                 value:140,
                 color: '#ff0000',
                 width:2,
                 zIndex:4,
-                label:{text:'ไม่เกิน 140'}
+                //label:{text:'ไม่เกิน 140'}
             }]
         },
         
         series: [{
             showInLegend: false,
-            name: 'น้ำหนักตัว',
-            data: [120, 69, 95, 145, 182, 120, 122, 105, 233, 183, 139, 96]
+            name: 'หนัก',
+            data: $w
         }]
     });
 

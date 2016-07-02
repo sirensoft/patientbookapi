@@ -139,9 +139,9 @@ WHERE t.next_date >= CURDATE() AND t.cid = '$cid' ";
             'raw'=>$raw
         ]);               
     }
-    public function actionChart(){
+    public function actionChart($cid=NULL){
         return $this->render('chart',[
-           
+           'cid'=>$cid
         ]);
     }
 
