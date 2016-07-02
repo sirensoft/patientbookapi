@@ -144,5 +144,40 @@ WHERE t.next_date >= CURDATE() AND t.cid = '$cid' ";
            'cid'=>$cid
         ]);
     }
+    
+     public function actionHomeVisitList($cid=NULL){
+        
+        $sql = "select * from home_visit where cid= '$cid' order by date_input DESC,time_input DESC";
+        $raw = $this->query_all($sql);
+        
+        return $this->render('home-visit-list',[
+            'raw'=>$raw
+        ]);               
+    }
+    
+    public function actionHomeVisitInput(){
+        if(!\Yii::$app->request->isPost){
+            return 0;
+        }
+        $cid=\Yii::$app->request->post('cid');
+        $date_input = date('Y-m-d');
+        $time_input = date('H:i:s');
+        $weight=\Yii::$app->request->post('weight');
+        $height=\Yii::$app->request->post('height');
+        $waist=\Yii::$app->request->post('waist');
+        $bps=\Yii::$app->request->post('bps');
+        $bpd=\Yii::$app->request->post('bpd');
+        $pulse=\Yii::$app->request->post('pulse');
+        $sugar=\Yii::$app->request->post('sugar');
+        $note1=\Yii::$app->request->post('note1');
+        $note2=\Yii::$app->request->post('note2');
+        
+        $sql =" INSERT INTO `home_visit` (`cid`, `date_input`, `time_input`, `weight`, `height`, `waist`, `bps`, `bpd`, `pulse`, `sugar`, `note1`, `note2`) "
+                . "VALUES ('$cid', '$date_input', '$time_input', '$weight', '$height', '$waist', '$bps', '$bpd', '$pulse', '$sugar', '$note1', '$note2') ";
+    
+        return $this->exec_sql($sql);
+        
+    }
+    
 
 }
