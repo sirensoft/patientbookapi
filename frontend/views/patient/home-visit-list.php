@@ -11,10 +11,10 @@ $i=0;
 
 if($i%2==0){
     $color='#6897bb';     
-    $txt_color = '#000000';
+    $txt_color = '#ffffff';
 }  else {   
-   $color = '#f7f7f7';
-   $txt_color = '#ffffff';
+   $color = '#fff68f';
+   $txt_color = '#990000';
 }
 
 ?>
