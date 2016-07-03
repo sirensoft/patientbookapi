@@ -179,5 +179,16 @@ WHERE t.next_date >= CURDATE() AND t.cid = '$cid' ";
         
     }
     
+    public function actionLab($cid=NULL){
+        $sql = " SELECT t.cid,t.date_serv,t.labname,t.labresult FROM lab_order t
+WHERE t.cid = '$cid'  order by date_serv DESC";
+        
+        $raw = \Yii::$app->db->createCommand($sql)->queryAll();
+        return $this->render('lab',[
+            'raw'=>$raw
+        ]);
+        
+    }
+    
 
 }
