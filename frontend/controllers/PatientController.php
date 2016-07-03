@@ -190,5 +190,17 @@ WHERE t.cid = '$cid'  order by date_serv DESC";
         
     }
     
+    public function actionDrug($cid=NULL){
+        $sql = " SELECT t.cid,t.date_serv,t.drugname FROM drug t
+WHERE t.cid = '$cid'
+AND t.date_serv = (SELECT max(date_serv) FROM drug WHERE cid='$cid')
+ ";
+        $raw = \Yii::$app->db->createCommand($sql)->queryAll();
+        return $this->render('drug',[
+            'raw'=>$raw
+        ]); 
+        
+    }
+    
 
 }
