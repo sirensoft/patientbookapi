@@ -40,12 +40,12 @@ class MediaController extends \yii\web\Controller {
             'notification' => [
                 'body' => $message,
                 'title' => 'หมอแจ้งเตือน',
-                
-            // 'click_action'=>'plkhealth.it.app.patientbook.WebviewActivity'
+                'click_action'=>'OPEN_ACTIVITY_1'
+              
             ],
             'data' => [
                 'id' => "UTEHN",
-                'desc' => "OK"
+                'desc' => $message
             ]
         ];
         $headers = array(
