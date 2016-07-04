@@ -9,7 +9,7 @@
     <span style="color:gray"><?=$value['send_date']?></span>:&nbsp;
     <b><?=$value['chat_text']?></b>
     <hr>
-    <div style="text-align:right;">
+    <div style="text-align:left;">
         <?=  empty($value['chat_answer'])?'&nbsp;':'หมอ: '.$value['chat_answer']?>
     </div>
 </div>
