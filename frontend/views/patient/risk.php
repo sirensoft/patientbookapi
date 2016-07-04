@@ -2,7 +2,7 @@
 <table width="100%">
     <tr>
         <td>ผู้ป่วย</td>
-        <td ><?= $data['person_disease'] ?></td>
+        <td colspan="2"><?= $data['person_disease'] ?></td>
     </tr>
     <tr>
         <td>น้ำหนัก</td>
@@ -44,7 +44,7 @@
 
     </tr>
     <tr>
-        <td colspan="3" bgcolor="#<?= $data['dm_color'] ?>" style="color: white"><h4><?= $data['dm_text'] ?></h4> </td>
+        <td colspan="3" bgcolor="<?= $data['dm_color'] ?>" style="color: black"><h4><?= $data['dm_text'] ?></h4> </td>
     </tr>
 
     <tr>
@@ -52,7 +52,7 @@
 
     </tr>
     <tr>
-        <td colspan="3" bgcolor="#<?= $data['ht_color'] ?>" style="color: white"><h4><?= $data['ht_text'] ?></h4></td>
+        <td colspan="3" bgcolor="<?= $data['ht_color'] ?>" style="color: black"><h4><?= $data['ht_text'] ?></h4></td>
     </tr>
 
 
@@ -60,7 +60,7 @@
         <td colspan="3">โรคไต</td>        
     </tr>
     <tr>
-        <td colspan="3" bgcolor="#<?= $data['ckd_color'] ?>" style="color: white" ><h4><?= $data['ckd_text'] ?></h4></td>
+        <td colspan="3" bgcolor="<?= $data['ckd_color'] ?>" style="color: black" ><h4><?= $data['ckd_text'] ?></h4></td>
     </tr>
 
     <tr>
@@ -68,7 +68,7 @@
 
     </tr>
     <tr>
-        <td colspan="3" bgcolor="#<?= $data['cvd_color'] ?>" style="color: white"><h4><?= $data['cvd_text'] ?></h4></td>
+        <td colspan="3" bgcolor="<?= $data['cvd_color'] ?>" style="color: black"><h4><?= $data['cvd_text'] ?></h4></td>
     </tr>
 
 

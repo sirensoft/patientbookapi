@@ -61,7 +61,7 @@ t.person_disease
 ,CONCAT(t.eye_date,' (',t.eye_result,')') eye
 ,CONCAT(t.kidney_date,' (',t.kidney_result,')') kidney
 ,CONCAT(t.foot_date,' (',t.foot_result,')') foot
-,t.ckd_color,t.ckd_text,t.cvd_color,t.cvd_text,t.cvd_risk
+,t.ckd_color,t.ckd_text,t.cvd_color,t.cvd_text
 ,t.last_update
 
 FROM patient t WHERE t.cid = '$cid' ";
