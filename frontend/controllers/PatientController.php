@@ -202,5 +202,5 @@ AND t.date_serv = (SELECT max(date_serv) FROM drug WHERE cid='$cid')
         
     }
     
-
+ 
 }

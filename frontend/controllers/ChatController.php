@@ -64,6 +64,14 @@ AND t.doctor_or_patient = 'doctor' AND t.patient_cid = '$cid' ";
     }
     
     
+    public function actionList($cid=NULL){
+        $sql = " SELECT * FROM chat where patient_cid = '$cid' order by send_date DESC";
+        $raw = \Yii::$app->db->createCommand($sql)->queryAll();
+        return $this->render('list',[
+            'raw'=>$raw
+        ]);
+    }
+    
     
 
 }
