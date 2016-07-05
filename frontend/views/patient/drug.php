@@ -14,8 +14,8 @@ foreach ($raw as $value){}
         $color ='#d3ffce';
     ?>
         <tr bgcolor="<?=$color?>">
-            <td>ขื่อยา: </td> 
-            <td><?= $value['drugname'] ?></td>            
+           
+            <td ><h4>- <?= $value['drugname'] ?></h4></td>            
         </tr>
        
     <?php endforeach; ?>
