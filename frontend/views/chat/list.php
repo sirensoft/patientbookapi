@@ -10,11 +10,13 @@ $i=0;
 <?php foreach ($raw as $value) : ?>
 <?php
 $i++;
+/*
 if($i%2==0){
 $color = "#faebd7";
 }else{
 $color = "#c6e2ff";
-}
+}*/
+$color = "#faebd7";
 ?>
 <div style="text-align:left;margin-bottom: 10px;padding: 5px;background-color: <?=$color?>">
     <span style="color:gray"><?=$value['send_date']?></span>:&nbsp;

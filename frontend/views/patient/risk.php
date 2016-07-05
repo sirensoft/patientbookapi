@@ -1,3 +1,14 @@
+<style>
+    .content {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+</style>
+<div class="content">
 <strong>ข้อมูล ณ วันที่ <?= $data['last_update'] ?></strong>
 <table width="100%">
 
@@ -79,4 +90,5 @@
 
 
 </table>
+</div>
 
