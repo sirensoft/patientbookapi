@@ -168,7 +168,7 @@ $js = <<<JS
                 text: 'มล'
             },
             plotLines: [{
-                value:140,
+                value:110,
                 color: '#ff0000',
                 width:2,
                 zIndex:4,
