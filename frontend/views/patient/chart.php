@@ -172,7 +172,7 @@ $js = <<<JS
                 color: '#ff0000',
                 width:2,
                 zIndex:4,
-                label:{text:'ไม่เกิน 140'}
+                label:{text:'ไม่เกิน 110'}
             }]
         },
         
