@@ -56,12 +56,14 @@ class PatientController extends AppController {
 
 t.person_disease
 ,t.waist,t.weight,t.height,t.bmi,t.bmi_color,t.bmi_text
-,t.dm_color,t.dm_text,t.ht_color,t.ht_text
+,t.dm_level,t.dm_color,t.dm_text
+,t.ht_level,t.ht_color,t.ht_text
 ,t.bps,t.bpd ,t.pulse
 ,CONCAT(t.eye_date,' (',t.eye_result,')') eye
 ,CONCAT(t.kidney_date,' (',t.kidney_result,')') kidney
 ,CONCAT(t.foot_date,' (',t.foot_result,')') foot
-,t.ckd_color,t.ckd_text,t.cvd_color,t.cvd_text
+,t.ckd_level,t.ckd_color,t.ckd_text
+,t.cvd_level,t.cvd_color,t.cvd_text
 ,t.last_update
 
 FROM patient t WHERE t.cid = '$cid' ";

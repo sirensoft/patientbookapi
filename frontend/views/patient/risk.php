@@ -8,18 +8,27 @@
     user-select: none;
 }
 </style>
+
+<?php
+$level = [4,5];
+
+$dm_color = in_array($data['dm_level'],$level)?'white':'black';
+$ht_color = in_array($data['ht_level'],$level)?'white':'black';
+$ckd_color = in_array($data['ckd_level'],$level)?'white':'black';
+$cvd_color = in_array($data['cvd_level'],$level)?'white':'black';
+?>
 <div class="content">
 <strong>ข้อมูล ณ วันที่ <?= $data['last_update'] ?></strong>
 <table width="100%">
 
-    <tr><td colspan="3"><strong><u>ความเสี่ยง</u></strong></td></tr>
+    <tr><td colspan="3"><strong><u>สถานะความเสี่ยงปัจจุบัน</u></strong></td></tr>
 
     <tr>
         <td colspan="3">เบาหวาน</td>
 
     </tr>
     <tr>
-        <td colspan="3" bgcolor="<?= $data['dm_color'] ?>" style="color: black"><h4><?= $data['dm_text'] ?></h4> </td>
+        <td colspan="3" bgcolor="<?= $data['dm_color'] ?>" style="color: <?=$dm_color?>"><h4><?= $data['dm_text'] ?></h4> </td>
     </tr>
 
     <tr>
@@ -27,7 +36,7 @@
 
     </tr>
     <tr>
-        <td colspan="3" bgcolor="<?= $data['ht_color'] ?>" style="color: black"><h4><?= $data['ht_text'] ?></h4></td>
+        <td colspan="3" bgcolor="<?= $data['ht_color'] ?>" style="color: <?=$ht_color?>"><h4><?= $data['ht_text'] ?></h4></td>
     </tr>
 
 
@@ -35,7 +44,7 @@
         <td colspan="3">โรคไต</td>        
     </tr>
     <tr>
-        <td colspan="3" bgcolor="<?= $data['ckd_color'] ?>" style="color: black" ><h4><?= $data['ckd_text'] ?></h4></td>
+        <td colspan="3" bgcolor="<?= $data['ckd_color'] ?>" style="color: <?=$ckd_color?>" ><h4><?= $data['ckd_text'] ?></h4></td>
     </tr>
 
     <tr>
@@ -43,7 +52,7 @@
 
     </tr>
     <tr>
-        <td colspan="3" bgcolor="<?= $data['cvd_color'] ?>" style="color: black"><h4><?= $data['cvd_text'] ?></h4></td>
+        <td colspan="3" bgcolor="<?= $data['cvd_color'] ?>" style="color: <?=$cvd_color?>"><h4><?= $data['cvd_text'] ?></h4></td>
     </tr>
 </table>
 <br>
