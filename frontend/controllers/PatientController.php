@@ -100,7 +100,9 @@ FROM patient t WHERE t.cid = '$cid' ";
     public function actionAppoint($cid = "") {
         $this->jsonHead();
         $sql = " SELECT min(t.next_date) as mdate,t.next_time as mtime,t.cid
-,t.app_note mnote,h.hosname hospcode,t.app_clinic mclinic,t.app_doctor mdoctor FROM appointment t
+,t.app_note mnote,h.hosname hospcode,t.app_clinic mclinic,t.app_doctor mdoctor
+,if(TIMESTAMPDIFF(DAY,CURDATE(),min(t.next_date))>0,TIMESTAMPDIFF(DAY,CURDATE(),min(t.next_date)),0) mcount 
+FROM appointment t
 LEFT JOIN chospital_amp h on h.hoscode = t.hospcode
 WHERE t.next_date >= CURDATE() AND t.cid = '$cid' ";
         $raw_array = $this->query_all($sql);
