@@ -165,7 +165,7 @@ $js = <<<JS
         },
         yAxis: {
             title: {
-                text: 'มล'
+                text: 'มก/ดล'
             },
             plotLines: [{
                 value:110,
